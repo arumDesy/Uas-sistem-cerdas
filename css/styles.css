@@ -1,0 +1,634 @@
+/* ============================================
+   Premium AI Makeup Recommender - Styles
+   Modern, Clean & Professional Design
+   ============================================ */
+
+/* CSS Variables - Modern Color Palette */
+:root {
+  /* Main Colors */
+  --primary: #FF6B9D;
+  --primary-dark: #E5548A;
+  --primary-light: #FFB3D1;
+  --accent: #7C3AED;
+  --accent-light: #A78BFA;
+
+  /* Neutrals */
+  --bg-main: #FAFBFC;
+  --bg-card: #FFFFFF;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+
+  /* Borders & Dividers */
+  --border-color: #E5E7EB;
+  --border-light: #F3F4F6;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(31, 41, 55, 0.04);
+  --shadow-md: 0 4px 16px rgba(31, 41, 55, 0.08);
+  --shadow-lg: 0 10px 30px rgba(31, 41, 55, 0.12);
+  --shadow-xl: 0 20px 50px rgba(31, 41, 55, 0.16);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #FF6B9D 0%, #FF8FAB 100%);
+  --gradient-accent: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+  --gradient-bg: linear-gradient(180deg, #FAFBFC 0%, #FFFFFF 100%);
+}
+
+/* ============================================
+   Typography - Inter & Outfit
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--gradient-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ============================================
+   Layout & Container
+   ============================================ */
+.container {
+  max-width: 1200px;
+  padding: 2rem 1rem;
+}
+
+/* ============================================
+   Header Styling
+   ============================================ */
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+header small {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   Card Components
+   ============================================ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card h6 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card h6::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: var(--gradient-primary);
+  border-radius: 4px;
+}
+
+/* ============================================
+   Form Elements
+   ============================================ */
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.1);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Range Slider */
+.form-range {
+  width: 100%;
+  height: 6px;
+  background: var(--border-light);
+  border-radius: 10px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.form-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+  padding: 0.875rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Primary Button */
+.btn-pink,
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 14px rgba(255, 107, 157, 0.3);
+}
+
+.btn-pink:hover,
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-outline-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 2px solid var(--border-color);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--text-secondary);
+  color: white;
+  border-color: var(--text-secondary);
+}
+
+/* Light Button */
+.btn-light {
+  background: var(--bg-main);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-light);
+}
+
+.btn-light:hover {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+
+/* Small Button */
+.btn-sm {
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Button Group */
+.d-flex.gap-2 {
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Product Item Cards
+   ============================================ */
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAFBFC 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.item:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+  background: white;
+}
+
+.item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--border-light);
+}
+
+.item .info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item .title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.item .meta {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.item .price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ============================================
+   Results & Output Section
+   ============================================ */
+#output {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom Scrollbar */
+#output::-webkit-scrollbar {
+  width: 8px;
+}
+
+#output::-webkit-scrollbar-track {
+  background: var(--border-light);
+  border-radius: 10px;
+}
+
+#output::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 10px;
+}
+
+#output::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Empty State */
+.empty {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  background: linear-gradient(135deg, #FAFBFC 0%, #F3F4F6 100%);
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   Summary Box
+   ============================================ */
+#summary {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+}
+
+#summary .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#summary strong {
+  color: var(--primary);
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ============================================
+   Text Utilities
+   ============================================ */
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ============================================
+   Modal Styling
+   ============================================ */
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-light);
+  padding: 1.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* ============================================
+   Toast Notifications
+   ============================================ */
+.toast {
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  border: none;
+}
+
+.toast-body {
+  font-weight: 500;
+  padding: 1rem;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .item {
+    padding: 0.875rem;
+  }
+
+  .item img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  #output {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 576px) {
+  .d-flex.gap-2 .btn {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .item .price {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ============================================
+   Animation & Micro-interactions
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+input,
+select,
+.card,
+.item {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+*:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus,
+input:focus,
+select:focus {
+  outline: none;
+}
+
+/* ============================================
+   Additional Polish
+   ============================================ */
+
+/* Badge for strategy */
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background: var(--gradient-accent);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Icon styling */
+.bi {
+  font-size: 1.1em;
+  vertical-align: middle;
+}
+
+/* Hover effects for all cards */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.card:hover::before {
+  left: 100%;
+}

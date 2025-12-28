@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Makeup Product Recommender - Smart Recommendation System</title>
+  <meta name="description"
+    content="Temukan kombinasi produk makeup terbaik sesuai budget dan style Anda dengan sistem rekomendasi AI yang cerdas." />
+
+  <!-- Google Fonts - Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <header class="d-flex align-items-center justify-content-between">
+          <div>
+            <h1 class="h4 mb-0">AI Makeup Product Recommender</h1>
+            <p class="small text-muted mb-0">Masukkan budget dan pilih style untuk menemukan produk makeup yang sesuai
+              tanpa melebihi budget.</p>
+          </div>
+          <div class="d-none d-md-block">
+            <small class="text-muted">Proyek: Sistem Cerdas — Tugas Akhir</small>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <!-- Form column -->
+      <div class="col-md-5">
+        <section class="card h-100">
+          <div class="card-body">
+            <h2 class="h6 text-secondary">Filter & Preferensi</h2>
+
+            <div class="mb-3">
+              <label for="budget" class="form-label small">Budget (Rp)</label>
+              <input id="budget" class="form-control" type="text" inputmode="numeric" placeholder="Contoh: 250000" />
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="style" class="form-label small">Style</label>
+                <select id="style" class="form-select">
+                  <option value="Natural">Natural</option>
+                  <option value="Glam">Glam</option>
+                  <option value="Bridal">Bridal</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label for="priority" class="form-label small">Prioritas</label>
+                <select id="priority" class="form-select">
+                  <option value="cheapest">Termurah</option>
+                  <option value="aesthetic">Estetika</option>
+                  <option value="balanced">Seimbang</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="aestheticWeight" class="form-label small">Bobot Estetika (Seimbang)</label>
+              <input id="aestheticWeight" class="form-range" type="range" min="0" max="100" value="60" />
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+              <button id="searchBtn" class="btn btn-pink">Cari Rekomendasi</button>
+              <button id="optimizeBtn" class="btn btn-outline-primary">Optimalkan Estetika</button>
+              <button id="resetBtn" class="btn btn-outline-secondary">Reset</button>
+              <button id="clearSelectionBtn" class="btn btn-light">Bersihkan</button>
+            </div>
+
+            <p class="mt-3 small text-muted">Algoritma: Termurah / Estetika / Seimbang (atur bobot). Tombol "Optimalkan
+              Estetika" menjalankan knapsack untuk memaksimalkan total estetika dalam batas budget.</p>
+          </div>
+        </section>
+
+        <section class="card mt-3">
+          <div class="card-body">
+            <h3 class="h6 mb-2 text-secondary">💄 Dataset Produk</h3>
+            <ul class="small mb-0 list-unstyled" style="line-height: 1.8;">
+              <li>✨ <strong>28 produk makeup</strong> profesional</li>
+              <li>📊 Kategori: Foundation, Concealer, Lips, Eyes, Blush & lebih</li>
+              <li>🤖 Algoritma: Greedy & Knapsack optimization</li>
+              <li>💰 Range harga: Rp 65.000 - Rp 225.000</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Results column -->
+      <div class="col-md-7">
+        <section class="card h-100">
+          <div class="card-body d-flex flex-column" style="min-height:300px">
+            <div class="d-flex align-items-start">
+              <div>
+                <h3 id="results-title" class="h6 text-secondary mb-1">Hasil Rekomendasi</h3>
+                <div id="results-sub" class="small text-muted">Daftar produk yang sesuai</div>
+              </div>
+              <div class="ms-auto">
+                <button id="downloadBtn" class="btn btn-outline-secondary btn-sm" disabled title="Download hasil">
+                  <i class="bi bi-download me-1"></i>Download
+                </button>
+              </div>
+            </div>
+
+            <div id="output" class="mt-3 flex-grow-1 overflow-auto" aria-live="polite" role="region">
+              <div class="empty text-center p-3">Masukkan budget dan pilih style lalu klik "Cari Rekomendasi".</div>
+            </div>
+
+            <div id="summary" class="mt-3">
+              <div class="row text-muted small">
+                <div class="col-6">Total biaya: <strong id="summary-total">-</strong></div>
+                <div class="col-6 text-end">Sisa budget: <strong id="summary-remaining">-</strong></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="card mt-3">
+          <div class="card-body">
+            <h3 class="h6 text-secondary">Catatan</h3>
+            <p class="small text-muted mb-0">Aplikasi ini berjalan sepenuhnya di browser (HTML/CSS/JS). Untuk dataset
+              lebih besar atau penyimpanan, tambahkan backend.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download modal -->
+  <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="downloadModalLabel">Simpan hasil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Pilih format file untuk diunduh.
+        </div>
+        <div class="modal-footer">
+          <button id="btnDownloadPDF" type="button" class="btn btn-pink">
+            <i class="bi bi-file-pdf"></i> PDF
+          </button>
+          <button id="btnDownloadCSV" type="button" class="btn btn-outline-primary">
+            <i class="bi bi-file-earmark-spreadsheet"></i> CSV
+          </button>
+          <button id="btnDownloadJSON" type="button" class="btn btn-outline-secondary">
+            <i class="bi bi-filetype-json"></i> JSON
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index:1080">
+    <div id="toastContainer"></div>
+  </div>
+
+  <!-- jsPDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="../js/app.js"></script>
+</body>
+
+</html>
