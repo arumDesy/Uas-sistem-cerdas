@@ -1,0 +1,26 @@
+{
+  "name": "ai-makeup-recommender",
+  "version": "2.0.0",
+  "description": "AI Makeup Product Recommender - Smart Recommendation System with PDF Export",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "makeup",
+    "recommender",
+    "ai",
+    "greedy-algorithm",
+    "knapsack",
+    "pdf-export"
+  ],
+  "author": "arumDesy",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=14.x"
+  }
+}
